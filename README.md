@@ -36,3 +36,10 @@ Add a key to your settings dictionary like the following:
 
 
 Each setting in the platform specific dictionary will be applied to your views if they are different from what is currently set.
+
+You can also specify which keys you want to apply (and in what order) to your settings:
+
+    "platform_settings_keys": ["${platform}", "user_${platform}"]
+
+This is the default setting, so if you are using OS X the dictionary with the name "osx" will be loaded and then updated with the settings from the dictionary with the name "user_osx" before being applied to your views.
+
