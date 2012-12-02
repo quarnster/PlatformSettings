@@ -23,15 +23,15 @@ Add a key to your settings dictionary like the following:
 
     "osx":
     {
-        "font_size": "12.0"
+        "font_size": 12.0
     },
     "linux":
     {
-        "font_size": "10.0"
+        "font_size": 10.0
     },
     "windows":
     {
-        "font_size": "8.0"
+        "font_size": 8.0
     }
 
 
