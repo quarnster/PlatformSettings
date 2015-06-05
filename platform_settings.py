@@ -4,7 +4,10 @@ import sublime_plugin
 class PlatformSettingsEventListener(sublime_plugin.EventListener):
     def check_settings(self, view, first=False):
         s = view.settings()
-        keys = s.get("platform_settings_keys", ["${platform}", "user_${platform}"])
+        default_keys = ["${platform}", "user_${platform}"]
+        keys = s.get("platform_settings_keys", default_keys)
+        if not keys:
+            keys = default_keys
 
         if not first:
             first = not s.get("platform_settings_was_here", False)
@@ -14,7 +17,7 @@ class PlatformSettingsEventListener(sublime_plugin.EventListener):
         platform_settings = {}
         for key in keys:
             key = key.replace("${platform}", sublime.platform())
-            platform_settings.update(s.get(key, {}))
+            platform_settings.update(s.get(key, {}) or {})
 
         for key in platform_settings:
             current = s.get(key, None)
